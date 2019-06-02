@@ -1,0 +1,61 @@
+<div class="row title-block">
+  <div class="col-md-6 offset-md-3 title"><%= @challenge.title %></div>
+</div> 
+
+<div class="row content description">
+  <div class="col-md-6 offset-md-3"><%= @challenge.description %></div>
+</div>
+<br>
+
+<div id="editor">エディタにデフォルトで入れたいコードはココに書く</div>
+
+<div class="output">
+  <button id="try" class="btn btn-primary" style="margin-left: 40%;">送信</button>
+  <div class="row output-blocks" id="result">
+    <div class="col-6 col-md-4 output-block">
+      <p>入力値：</p>
+      <div><%= @challenge.tests.first.input %></div>
+    </div>
+    <div class="col-6 col-md-4 output-block">
+      <p>期待値：</p>
+      <div><%= @challenge.tests.first.expect %></div>
+    </div>
+    <div class="col-6 col-md-4 output-block">
+      <p>結果：</p>
+      <div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var editor = ace.edit("editor");
+  editor.$blockScrolling = Infinity;
+  editor.setTheme("ace/theme/monokai");
+  editor.getSession().setMode("ace/mode/ruby");
+  editor.setFontSize(20);
+</script>
+
+<script>
+$(function(){
+
+  $('#try').on('click',function(){
+    var code_lines = [];
+    console.log(1);
+    $('.ace_line').each(function(index){
+      code_lines.push($(this).text());
+    });
+    console.log(2);
+
+    post(code_lines, gon.challenge_id);
+
+    function post(code, challenge_id){
+      $.post( '/challenges/execute', {
+        content: code,
+        challenge_id: challenge_id
+      });
+    };
+    
+  });
+});
+
+</script>

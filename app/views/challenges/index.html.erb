@@ -1,0 +1,9 @@
+<div class="row title-block">
+  <div class="col-md-6 offset-md-3 title">問題一覧</div>
+</div>
+
+<% @challenges.each do |challenge|%>
+  <div class="row content">
+    <div class="col-md-6 offset-md-3"><%= link_to "#{challenge.title}", challenge_path(challenge) %></div>
+  </div>
+<% end %>
