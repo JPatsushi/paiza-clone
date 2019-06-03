@@ -13,9 +13,9 @@ class ChallengesController < ApplicationController
     code_lines = params["content"]
     challenge_id = params["challenge_id"]
     service = ExecuteCode.new(code_lines, challenge_id)
-    service.execute_test
-
-
+    @result, @result_flag = service.execute_test 
+    # ["3\n,false"]
+    # binding.pry
   end
 
 end

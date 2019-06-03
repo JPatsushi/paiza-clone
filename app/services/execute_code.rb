@@ -20,24 +20,29 @@ class ExecuteCode
     test_options
     code_lines = self.code_lines
 
-    # ランダムファイル名生成
+    # ランダムファイル名生成と書き込み
     file_name = write_into_file(code_lines)
-
-    # def responds
-    o,e = Open3.capture3("ruby code/#{file_name}.rb", :stdin_data=>"20")
-    output = o
-    error = e
-    binding.pry
-    # 外部コマンド実行 実行後は削除
-    Open3.capture3("rm code/#{file_name}.rb")
     
-    binding.pry
-    # テストオプションを投入
-
-    # 結果を返す["結果", true/false]
-
-
-
+    # コードを実行
+    result_flag = false
+    output = ""
+    error = ""
+    test_options.each do |option|
+      # binding.pry
+      o, e = Open3.capture3("ruby code/#{file_name}.rb", :stdin_data=>"#{option[0]}")
+      output = o
+      error = e 
+      # binding.pry
+      if output.to_s[0..-2] == option[1] && error.empty?
+        result_flag = true
+      else
+        result_flag = false
+      end 
+    end
+    # binding.pry
+    # 実行後は削除
+    Open3.capture3("rm code/#{file_name}.rb")
+    return output.to_s, result_flag
   end
 
   def execute_confirmation
