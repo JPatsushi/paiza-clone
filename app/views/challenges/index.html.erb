@@ -1,9 +1,29 @@
-<div class="row title-block">
-  <div class="col-md-6 offset-md-3 title">問題一覧</div>
+<aside>
+  <%= render 'share/side_bar' %>
+</aside> 
+<div class="main-bar"> 
+  <div class="row title-block">
+    <div class="col-md-6 offset-md-3 title">問題一覧</div>
+  </div>
+  <%# @challenges.each_with_index do |challenge, index|%>
+          <%# <tr>
+            <th scope="row"><%= index + 1 %>
+            <%# <td>= link_to "#{challenge.title}", challenge_path(challenge)</td> %>
+          <%# </tr>  %>
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="list-group">
+        <% 100.times do %>       
+          <li class="list-group-item p-0 border-0">
+            <div class="shadow-sm p-1 mb-1 bg-light rounded d-flex flex-row justify-content-start">
+              <div class="p-1 border-right">Flex item 1</div>
+              <div class="p-1 flex-grow-1">Flex item 2</div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<% @challenges.each do |challenge|%>
-  <div class="row content">
-    <div class="col-md-6 offset-md-3"><%= link_to "#{challenge.title}", challenge_path(challenge) %></div>
-  </div>
-<% end %>
+
