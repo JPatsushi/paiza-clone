@@ -5,6 +5,7 @@
 body {
   max-height: 100vh;
   // min-width: 767px;
+  background-color: #f7f7f9;
 }
 
 header {
@@ -16,47 +17,63 @@ header {
 
 aside {
   position: fixed;
-  width: 30%;
+  width: 25%;
   height: 100vh;
   // background-color: white;
   border-right: 1px solid black;
 }
 
-.main-bar {
-  margin-top: 40px;
-  margin-left: 30%;
-  padding-left: 3%;
-  padding-right: 3%;
+.picture {
+  background-image: url('ruby1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
+  height: 241px;
+  border-bottom: 1px solid black;
 }
 
-ul {
+.main-bar {
+  margin-top: 40px;
+  margin-left: 25%;
+  padding-left: 3%;
+  padding-right: 3%;
+  // background-image: linear-gradient(120deg,rgb(212, 36, 65),#b11d1d);
+}
 
+li div {
+  color: black;
+}
+
+li > div:hover {
+  background-color: #d4cfcf;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none ;
 }
 
 .title-block {
   height: 50px;
-  // color:;
-  // background-color: #4b6075;
   margin-top: 5px;
   margin-bottom: 5px;
-}
-
-.title {
-  text-align: center;
-  line-height: 50px;
-  font-size: 28px;
+  .title {
+    text-align: center;
+    line-height: 50px;
+    font-size: 28px;
+  }
 }
 
 .content-block {
   background-color: #becbd9;
   // text-align: center;
   line-height: 50px;
-  font-size: 28px;
+  font-size: 14px;
   box-shadow: 6px 7px 7px grey;
   border-radius: 5px;
   &.description {
     background-color: #607D8B;
-    font-size: 18px;
+    font-size: 14px;
   }
 }
 
@@ -66,19 +83,19 @@ ul {
   position: absolute;
   top: 173px;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: 26%;
+  right: 1%;
   height: 248px;
 }
 
 div.output {
-  width: 100%;
+  width: 73%;
   margin: 0 0;
   background-color: lightblue;
   height: 30%;
   position: absolute;
   top: 445px;
-  left: 0%;
+  left: 26%;
   height: 200px;
 }
 
@@ -98,3 +115,22 @@ div.output {
 .output-block {
   border: 1px solid black;
 } 
+
+@media (max-width: 821px){
+  aside {
+    display: none;
+  }
+
+  .main-bar {
+    margin-left: 0;
+  }
+
+  #editor {
+    left: 1%;
+  }
+
+  div.output {
+    width: 98%;
+    left: 1%;
+  }
+}

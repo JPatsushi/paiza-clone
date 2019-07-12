@@ -12,13 +12,14 @@
     <%= javascript_include_tag 'application' %>
     <%= Gon::Base.render_data %>
     <script src="https://kit.fontawesome.com/5938649cb0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <%# <script src="~/node_modules/sortablejs/Sortable.min.js"></script> %>
   </head>
 
   <body>
     <header>
       <%= render 'layouts/navigation_bar' %>
     </header>
-    <%# bootatrap container %>
       <%= yield %>
   </body>
 </html>

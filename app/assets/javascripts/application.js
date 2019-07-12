@@ -17,3 +17,4 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require ace-rails-ap
+//= require sortablejs/Sortable.min.js

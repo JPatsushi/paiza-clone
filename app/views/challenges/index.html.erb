@@ -1,29 +1,48 @@
 <aside>
   <%= render 'share/side_bar' %>
-</aside> 
+</aside>
 <div class="main-bar"> 
   <div class="row title-block">
     <div class="col-md-6 offset-md-3 title">問題一覧</div>
   </div>
-  <%# @challenges.each_with_index do |challenge, index|%>
-          <%# <tr>
-            <th scope="row"><%= index + 1 %>
-            <%# <td>= link_to "#{challenge.title}", challenge_path(challenge)</td> %>
-          <%# </tr>  %>
   <div class="row">
     <div class="col-sm-12">
       <ul class="list-group">
-        <% 100.times do %>       
-          <li class="list-group-item p-0 border-0">
-            <div class="shadow-sm p-1 mb-1 bg-light rounded d-flex flex-row justify-content-start">
-              <div class="p-1 border-right">Flex item 1</div>
-              <div class="p-1 flex-grow-1">Flex item 2</div>
-            </div>
-          </li>
+        <% @challenges.each do |challenge| %>              
+          <li class="list-group-item p-0 mb-1 border-0 rounded">
+            <%= link_to challenge_path(challenge) do %> 
+              <div class="shadow-sm p-1 bg-cus rounded d-flex flex-row justify-content-start">
+                <div class="p-1 pr-2 border-right border-danger"><i class="fas fa-check-circle"></i></div>
+                <div class="p-1 flex-grow-1"><%= challenge.title %></div>
+              </div>
+            <% end %>
+          </li> 
         <% end %>
       </ul>
     </div>
   </div>
+  <%# <div class="list">
+    <div class="item">First</div>
+    <div class="item">Second</div>
+    <div class="item">Third</div>
+    <div class="item">Fourth</div>
+  </div> %>
 </div>
+<style>
+  /* .item {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  } */
+</style>
+<%# 管理者でのみ設定する %>
+<script>
+  $(function() {
+    Sortable.create($('.list-group')[0], {
+      animation: 200,  // ミリ秒で指定
+    });
+  });
+</script>
 
 
