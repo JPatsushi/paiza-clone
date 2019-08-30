@@ -9,8 +9,7 @@
     <div class="col-md-6"><%= @challenge.description %></div>
   </div>
 
-  <div id="editor">エディタにデフォルトで入れたいコードはココに書く</div>
-
+  <div id="editor">input_line = gets.to_i</div>
   <div class="output">
     <button id="try" class="btn btn-danger" style="margin-left: 40%;">提出</button>
     <div class="row output-blocks" id="result">
@@ -39,15 +38,8 @@
 
 <script>
 $(function(){
-
   $('#try').on('click',function(){
-    var code_lines = [];
-    console.log(1);
-    $('.ace_line').each(function(index){
-      code_lines.push($(this).text());
-    });
-    console.log(2);
-
+    var code_lines = editor.getSession().getDocument().getAllLines()
     post(code_lines, gon.challenge_id);
 
     function post(code, challenge_id){
@@ -60,3 +52,5 @@ $(function(){
   });
 });
 </script>
+
+<%# t.split(",").map{|m| m.delete("""][")} %>

@@ -8,7 +8,8 @@ class ExecuteCode
   end
 
   def execute_test
-    challenge = Challenge.find_by(self.challenge_id)
+    binding.pry
+    challenge = Challenge.find(self.challenge_id)
     test_options = []
     challenge.tests.each do |test|
       test_pair = []
@@ -16,7 +17,7 @@ class ExecuteCode
       test_pair << test.expect
       test_options << test_pair
     end
-    # binding.pry
+   
     test_options
     code_lines = self.code_lines
 
@@ -28,11 +29,11 @@ class ExecuteCode
     output = ""
     error = ""
     test_options.each do |option|
-      # binding.pry
+      binding.pry
       o, e = Open3.capture3("ruby code/#{file_name}.rb", :stdin_data=>"#{option[0]}")
       output = o
       error = e 
-      # binding.pry
+      binding.pry
       if output.to_s[0..-2] == option[1] && error.empty?
         result_flag = true
       else

@@ -10,6 +10,7 @@ class ChallengesController < ApplicationController
   end
 
   def execute
+    # binding.pry
     code_lines = params["content"]
     challenge_id = params["challenge_id"]
     service = ExecuteCode.new(code_lines, challenge_id)
