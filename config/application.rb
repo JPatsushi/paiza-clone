@@ -29,5 +29,7 @@ module PaizaClone
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    # websocket-rails
+    config.middleware.delete Rack::Lock
   end
 end

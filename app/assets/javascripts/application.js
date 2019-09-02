@@ -18,3 +18,6 @@
 //= require bootstrap-sprockets
 //= require ace-rails-ap
 //= require sortablejs/Sortable.min.js
+//= require filetree.js
+//= require websocket_rails/main
+

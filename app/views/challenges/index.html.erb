@@ -1,6 +1,6 @@
-<aside>
-  <%= render 'share/side_bar' %>
-</aside>
+<%# <aside> %>
+  <%#= render 'share/side_bar' %>
+<%# </aside> %>
 <div class="main-bar"> 
   <div class="row title-block">
     <div class="col-md-6 offset-md-3 title">問題一覧</div>
@@ -28,6 +28,27 @@
     <div class="item">Fourth</div>
   </div> %>
 </div>
+<ul class="main-tree">
+  <li class="tree-title">photos-2015</li>
+  <ul class="tree">
+      <li class="tree-title">beach</li>
+      <li class="tree-item">0-2015-01-01.jpg</li>
+      <li class="tree-item">1-2015-01-02.jpg</li>
+      <li class="tree-item">2-2015-01-03.jpg</li>
+  </ul>
+  <ul class="tree">
+      <li class="tree-title">disneyland</li>
+      <li class="tree-item">3-2015-02-01.jpg</li>
+      <li class="tree-item">7-2015-02-02.jpg</li>
+      <li class="tree-item">8-2015-02-03.jpg</li>
+      <ul class="tree">
+          <li class="tree-title">birthday party</li>
+          <li class="tree-item">4-2015-02-01.jpg</li>
+          <li class="tree-item">5-2015-02-01.jpg</li>
+          <li class="tree-item">6-2015-02-01.jpg</li>
+      </ul>
+  </ul>
+</ul>
 <style>
   /* .item {
     -webkit-user-select: none;
@@ -37,12 +58,12 @@
   } */
 </style>
 <%# 管理者でのみ設定する %>
-<script>
+<%# <script>
   $(function() {
     Sortable.create($('.list-group')[0], {
       animation: 200,  // ミリ秒で指定
     });
   });
-</script>
+</script> %>
 
 
