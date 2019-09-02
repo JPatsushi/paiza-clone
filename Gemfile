@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'gon'
 gem 'filetree'
 gem 'websocket-rails'
+gem "nokogiri", ">= 1.10.4"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
